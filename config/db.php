@@ -5,7 +5,7 @@ return [
     'dsn' => 'mysql:host=localhost;dbname=yii2basic-blog',
     'username' => 'root',
     'password' => '',
-    'charset' => 'utf8',
+    'charset' => 'windows1251',
 
     // Schema cache options (for production environment)
     //'enableSchemaCache' => true,

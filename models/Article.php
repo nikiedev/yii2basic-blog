@@ -106,4 +106,12 @@ class Article extends \yii\db\ActiveRecord
 			return true;
 		}
 	}
+
+	public function getTags()
+	{
+		return $this->hasMany(Tag::className(), ['id' => 'tag_id'])
+			->viaTable('article_tag', ['article_id' => 'id']);
+	}
+
+
 }

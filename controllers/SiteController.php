@@ -64,6 +64,26 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+	/**
+	 * Single action.
+	 *
+	 * @return string
+	 */
+	public function actionSingle()
+    {
+    	return $this->render('single');
+    }
+
+	/**
+	 * Single action.
+	 *
+	 * @return string
+	 */
+	public function actionCategory()
+	{
+		return $this->render('category');
+	}
+
     /**
      * Login action.
      *

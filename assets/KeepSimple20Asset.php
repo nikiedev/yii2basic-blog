@@ -26,7 +26,7 @@ class KeepSimple20Asset extends AssetBundle
 	];
 	public $js = [
 		'keep-simple20/js/modernizr.js',
-		'keep-simple20/js/jquery-1.10.2.min.js',
+		//'keep-simple20/js/jquery-1.10.2.min.js',
         'keep-simple20/js/jquery-migrate-1.2.1.min.js',
         'keep-simple20/js/main.js',
 	];

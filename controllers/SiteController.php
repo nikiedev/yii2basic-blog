@@ -85,9 +85,18 @@ class SiteController extends Controller
 	 *
 	 * @return string
 	 */
-	public function actionSingle()
+	public function actionSingle($id)
     {
-    	return $this->render('single');
+    	$article = Article::findOne($id);
+	    $popular = Article::getPopular();
+	    $recent = Article::getRecent();
+	    $categories = Category::find()->all();
+    	return $this->render('single', [
+    		'article' => $article,
+		    'categories' => $categories,
+		    'popular' => $popular,
+		    'recent' => $recent,
+	    ]);
     }
 
 	/**
@@ -95,9 +104,20 @@ class SiteController extends Controller
 	 *
 	 * @return string
 	 */
-	public function actionCategory()
+	public function actionCategory($id)
 	{
-		return $this->render('category');
+		$data = Article::getArticlesByCategory($id);
+		$popular = Article::getPopular();
+		$recent = Article::getRecent();
+		$categories = Category::find()->all();
+
+		return $this->render('category', [
+			'articles' => $data['articles'],
+			'pagination' => $data['pagination'],
+			'categories' => $categories,
+			'popular' => $popular,
+			'recent' => $recent
+		]);
 	}
 
     /**

@@ -9,6 +9,7 @@ use app\widgets\Alert;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 
 KeepSimple20Asset::register($this);
@@ -68,6 +69,20 @@ KeepSimple20Asset::register($this);
                 </li>
                 <li><a href="page">Page</a></li>
             </ul> <!-- end #nav -->
+
+            <div class="auth">
+                <?php if (Yii::$app->user->isGuest): ?>
+                <a class="login" href="<?php echo Url::toRoute(['auth/login']); ?>">Login</a>
+                <a class="signup" href="<?php echo Url::toRoute(['auth/signup']); ?>">Register</a>
+                <?php else: ?>
+                <?php echo Html::beginForm(['/auth/logout'], 'post')
+		                . Html::submitButton(
+			                'Logout (' . Yii::$app->user->identity->name . ')',
+			                ['class' => 'btn btn-link logout']
+		                )
+		                . Html::endForm() ?>
+                <?php endif; ?>
+            </div>
 
         </div>
 

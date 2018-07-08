@@ -26,7 +26,7 @@ $this->title = 'Yii2 keep-simple20 Blog';
 
                         <div class="entry-meta">
                             <ul>
-                                <li><?php echo $article->date; ?></li>
+                                <li><?php echo $article->getDate(); ?></li>
                                 <span class="meta-sep">&bull;</span>
                                 <li><a href="#" title=""><?php echo $article->category->title; ?></a></li>
                                 <span class="meta-sep">&bull;</span>
@@ -81,19 +81,16 @@ $this->title = 'Yii2 keep-simple20 Blog';
             </div>
 
             <div class="widget widget_categories group">
-                <h3>Categories.</h3>
+                <h3>Categories</h3>
                 <ul>
-                    <li><a href="#" title="">Wordpress</a> (2)</li>
-                    <li><a href="#" title="">Ghost</a> (14)</li>
-                    <li><a href="#" title="">Joomla</a> (5)</li>
-                    <li><a href="#" title="">Drupal</a> (3)</li>
-                    <li><a href="#" title="">Magento</a> (2)</li>
-                    <li><a href="#" title="">Uncategorized</a> (9)</li>
+                    <?php foreach ($categories as $category_post): ?>
+                    <li><a href="#" title=""><?php echo $category_post->title; ?></a> <?php echo $category_post->getArticlesCount(); ?></li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
 
             <div class="widget widget_text group">
-                <h3>Widget Text.</h3>
+                <h3>Widget Text</h3>
 
                 <p>Lorem ipsum Ullamco commodo laboris sit dolore commodo aliquip incididunt fugiat esse dolor aute
                     fugiat minim eiusmod do velit labore fugiat officia ad sit culpa labore in consectetur sint cillum
@@ -117,12 +114,23 @@ $this->title = 'Yii2 keep-simple20 Blog';
             </div>
 
             <div class="widget widget_popular">
-                <h3>Popular Post.</h3>
+                <h3>Popular Posts</h3>
 
                 <ul class="link-list">
-                    <li><a href="#">Sint cillum consectetur voluptate.</a></li>
-                    <li><a href="#">Lorem ipsum Ullamco commodo.</a></li>
-                    <li><a href="#">Fugiat minim eiusmod do.</a></li>
+	                <?php foreach ($popular as $popular_post): ?>
+                    <li><a href="#"><?php echo $popular_post->title; ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+
+            </div>
+
+            <div class="widget widget_recent">
+                <h3>Recent Posts</h3>
+
+                <ul class="link-list">
+			        <?php foreach ($recent as $recent_post): ?>
+                        <li><a href="#"><?php echo $recent_post->title; ?></a></li>
+			        <?php endforeach; ?>
                 </ul>
 
             </div>
